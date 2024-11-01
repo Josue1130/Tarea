@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Descuento</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; 
+            margin: 0;
+        }
+        label, input, button {
+            margin: 10px 0; 
+        }
+        button {
+            border-radius: 12px; 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+        }
+        button:hover {
+            background-color: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+    <label for="valor1">Ingrese monto:</label>
+    <input type="number" id="valor1" required>
+    <br><br>
+    <button onclick="calcularDescuento()">Calcular Descuento</button>
+    <div class="resultado" id="resultado"></div>
+    <script>
+        function calcularDescuento() {
+            const monto = parseFloat(document.getElementById("valor1").value);
+            const descuentoPorcentaje = 0.10; // 10% de descuento
+            let precioFinal;
+
+            if (monto < 100) {
+                precioFinal = monto; // Sin descuento
+                document.getElementById("resultado").textContent = "Su precio final es: " + precioFinal.toFixed(2);
+            } else {
+                const descuento = monto * descuentoPorcentaje;
+                precioFinal = monto - descuento;
+                document.getElementById("resultado").textContent = "Su precio final es: " + precioFinal.toFixed(2);
+            }
+        }
+    </script>
+</body>
+</html>

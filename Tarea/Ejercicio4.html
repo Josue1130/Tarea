@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; 
+            margin: 0;
+        }
+        label, input, button {
+            margin: 10px 0; 
+        }
+        button {
+            border-radius: 12px; 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+        }
+        button:hover {
+            background-color: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Juego de Adivinanza de Números</h1>
+    <p>Intenta adivinar el número (entre 1 y 10):</p>
+    <p>Tu número:</p>
+    <input type="number" id="adivinanza" min="1" max="10">
+    <button onclick="adivinarNumero()">Adivinar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        const numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+
+        function adivinarNumero() {
+            const adivinanza = parseInt(document.getElementById("adivinanza").value);
+            const resultado = document.getElementById("resultado");
+
+            if (isNaN(adivinanza) || adivinanza < 1 || adivinanza > 10) {
+                resultado.textContent = "Por favor, ingresa un número válido entre 1 y 10.";
+                return;
+            }
+
+            if (adivinanza === numeroAleatorio) {
+                resultado.textContent = "¡Felicidades, adivinaste el número!";
+            } else {
+                resultado.textContent = `Lo siento, el número era ${numeroAleatorio}.`;
+            }
+        }
+    </script>
+</center>
+</body>
+</html>
